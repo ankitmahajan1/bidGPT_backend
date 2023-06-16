@@ -6,7 +6,7 @@ COPY ./requirements.txt /backend_app/requirements.txt
 
 COPY pdf /backend_app/pdf
 
-RUN pip install -r /backend_app/requirements.txt
+RUN pip install --no-cache-dir -r /backend_app/requirements.txt
 
 RUN [ "python", "-c", "import nltk; nltk.download('all')" ]
 

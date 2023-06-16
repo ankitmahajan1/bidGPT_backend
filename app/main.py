@@ -11,10 +11,29 @@ from langchain import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from fastapi.responses import JSONResponse
 import os
+from fastapi.middleware.cors import CORSMiddleware
+
 
 
 app = FastAPI()
-EMBEDDING_URL = "http://embedding/embeddings"
+
+
+origins = [
+    "*"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+
+
+EMBEDDING_URL = "http://localhost:9000/embeddings"
 COLLECTION_NAME = "custom_knowledge"
 
 # initialize chroma client 
