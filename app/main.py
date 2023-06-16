@@ -53,8 +53,7 @@ async def fetch_response(request: Request):
         # convert the returned responses to langchain docuemnts
         documents = []
         for doc in docs['documents'][0]:
-            print(doc)
-            document = Document(page_content=documents)
+            document = Document(page_content=doc)
             documents.append(document)
         
         
@@ -100,9 +99,7 @@ async def load_document(request: Request):
             headers = {
                 'Content-Type': 'application/json'
             }
-            print("headers")
             response = requests.request("POST", EMBEDDING_URL, headers=headers, data=payload)
-            print("api is called")
             resp_json = response.json()
             id = uuid.uuid4()
             
