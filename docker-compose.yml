@@ -1,0 +1,16 @@
+version: '2.1'
+services:
+  backend:
+    image: bidgpt_backend
+    depends_on:
+      - embedding
+    links:
+      - embedding
+    ports:
+      - "8080:8080"
+    environment:
+      - API_KEY='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'
+  embedding:
+    image: embedding_model
+    ports:
+      - "80:80"
