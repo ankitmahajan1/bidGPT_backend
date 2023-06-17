@@ -14,7 +14,6 @@ import os
 from fastapi.middleware.cors import CORSMiddleware
 
 
-
 app = FastAPI()
 
 
@@ -31,9 +30,7 @@ app.add_middleware(
 )
 
 
-
-
-EMBEDDING_URL = "http://localhost:9000/embeddings"
+EMBEDDING_URL = "http://embedding/embeddings"
 COLLECTION_NAME = "custom_knowledge"
 
 # initialize chroma client 
@@ -74,8 +71,8 @@ async def fetch_response(request: Request):
         for doc in docs['documents'][0]:
             document = Document(page_content=doc)
             documents.append(document)
-        
-        
+
+
         # initialize the openai model and pass the required docs and query to question answering chain 
         llm = OpenAI(temperature=0, openai_api_key=os.environ['API_KEY'])
         print("created the llm model")
