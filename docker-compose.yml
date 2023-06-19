@@ -14,3 +14,12 @@ services:
     image: embedding_model
     ports:
       - "80:80"
+  frontend:
+    image: gpt_ui
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+      - embedding
+    links:
+      - backend
