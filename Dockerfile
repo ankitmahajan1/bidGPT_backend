@@ -7,7 +7,7 @@ COPY ./requirements.txt /backend_app/requirements.txt
 COPY pdf /backend_app/pdf
 
 RUN pip install --no-cache-dir -r /backend_app/requirements.txt
-ENV API_KEY=
+ENV API_KEY=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
 
 COPY ./app /backend_app/app
 
